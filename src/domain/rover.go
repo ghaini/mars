@@ -44,18 +44,15 @@ func (r *Rover) moveForward() (err error) {
 	switch r.Direction {
 	case constants.DirectionNorth:
 		r.Position.AddY()
-		isInsideArea = r.Position.IsInsideArea(r.Plateau.Area)
 	case constants.DirectionSouth:
 		r.Position.SubY()
-		isInsideArea = r.Position.IsInsideArea(r.Plateau.Area)
 	case constants.DirectionEast:
 		r.Position.AddX()
-		isInsideArea = r.Position.IsInsideArea(r.Plateau.Area)
 	case constants.DirectionWest:
 		r.Position.SubX()
-		isInsideArea = r.Position.IsInsideArea(r.Plateau.Area)
 	}
 
+	isInsideArea = r.Position.IsInsideArea(r.Plateau.Area)
 	if !isInsideArea {
 		return exception.FellFromMars
 	}
